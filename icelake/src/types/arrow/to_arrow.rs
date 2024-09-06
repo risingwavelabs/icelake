@@ -65,7 +65,11 @@ impl TryFrom<types::Any> for ArrowDataType {
                     !v.element_required,
                     v.element_id as i64,
                     false,
-                );
+                )
+                .with_metadata(HashMap::from([(
+                    PARQUET_FIELD_ID_META_KEY.to_string(),
+                    v.element_id.to_string(),
+                )]));
 
                 Ok(ArrowDataType::List(Arc::new(field)))
             }
@@ -80,14 +84,22 @@ impl TryFrom<types::Any> for ArrowDataType {
                                 false,
                                 v.key_id as i64,
                                 false,
-                            ),
+                            )
+                            .with_metadata(HashMap::from([(
+                                PARQUET_FIELD_ID_META_KEY.to_string(),
+                                v.key_id.to_string(),
+                            )])),
                             ArrowField::new_dict(
                                 "value",
                                 (*v.value_type).try_into()?,
                                 !v.value_required,
                                 v.value_id as i64,
                                 false,
-                            ),
+                            )
+                            .with_metadata(HashMap::from([(
+                                PARQUET_FIELD_ID_META_KEY.to_string(),
+                                v.value_id.to_string(),
+                            )])),
                         ]
                         .into(),
                     ),
