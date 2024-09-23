@@ -124,7 +124,7 @@ impl IcebergTableIoArgsBuilder {
 
 impl OperatorCreator for IcebergTableIoArgs {
     fn create(&self) -> Result<Operator> {
-        let op = Operator::via_map(self.scheme, self.args.clone())?;
+        let op = Operator::via_iter(self.scheme, self.args.clone())?;
         // let prometheus_layer = PrometheusLayer::with_registry(self.registry.clone());
         // op = op.layer(prometheus_layer);
         Ok(op)
@@ -140,7 +140,7 @@ impl OperatorCreator for IcebergTableIoArgs {
         );
         args.insert(OP_ARGS_ROOT.to_string(), new_root);
 
-        Ok(Operator::via_map(scheme, args.clone())?)
+        Ok(Operator::via_iter(scheme, args.clone())?)
     }
 }
 

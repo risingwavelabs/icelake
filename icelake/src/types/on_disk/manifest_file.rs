@@ -671,7 +671,7 @@ mod tests {
 
         let operator = {
             let mut builder = Fs::default();
-            builder.root(dir_path.as_str());
+            builder = builder.root(dir_path.as_str());
             Operator::new(builder).unwrap().finish()
         };
 

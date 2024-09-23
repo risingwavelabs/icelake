@@ -119,7 +119,7 @@ mod test {
 
     pub fn create_operator() -> Operator {
         let mut builder = Memory::default();
-        builder.root("/");
+        builder = builder.root("/");
         Operator::new(builder).unwrap().finish()
     }
 
