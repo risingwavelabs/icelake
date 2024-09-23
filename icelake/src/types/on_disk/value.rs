@@ -510,8 +510,8 @@ mod test {
     /// - Decimal
     /// - Binary
     /// - Fixed
-    /// Ignore them now.
-    /// After support them, we can integrate this function with `struct_type_for_json`.
+    ///   Ignore them now.
+    ///   After support them, we can integrate this function with `struct_type_for_json`.
     fn struct_type_for_avro() -> Arc<Struct> {
         let struct_type = types::Struct::new(vec![
             types::Field::required(1, "v_int", types::Any::Primitive(types::Primitive::Int)).into(),

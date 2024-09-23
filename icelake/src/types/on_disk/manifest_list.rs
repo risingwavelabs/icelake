@@ -221,17 +221,16 @@ impl ManifestListWriter {
 
     fn v2_writer<'a>(&self, avro_schema: &'a AvroSchema) -> Result<AvroWriter<'a, Vec<u8>>> {
         let mut writer = AvroWriter::new(avro_schema, Vec::new());
-        writer.add_user_metadata("snapshot-id".to_string(), &self.snapshot_id.to_string())?;
+        writer.add_user_metadata("snapshot-id".to_string(), self.snapshot_id.to_string())?;
         writer.add_user_metadata(
             "parent-snapshot-id".to_string(),
-            &self
-                .parent_snapshot_id
+            self.parent_snapshot_id
                 .map(|id| id.to_string())
                 .unwrap_or("null".to_string()),
         )?;
         writer.add_user_metadata(
             "sequence-number".to_string(),
-            &self.sequence_number.to_string(),
+            self.sequence_number.to_string(),
         )?;
         writer.add_user_metadata("format-version".to_string(), "2")?;
         Ok(writer)
@@ -352,7 +351,7 @@ mod tests {
 
         let operator = {
             let mut builder = Fs::default();
-            builder.root(dir_path);
+            builder = builder.root(dir_path);
             Operator::new(builder).unwrap().finish()
         };
 

@@ -262,7 +262,7 @@ mod test {
     #[tokio::test]
     async fn test_rolling_writer() -> Result<(), anyhow::Error> {
         let mut builder = Memory::default();
-        builder.root("/tmp/table");
+        builder = builder.root("/tmp/table");
         let op = Operator::new(builder)?.finish();
 
         let location_generator = {
