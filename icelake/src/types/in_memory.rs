@@ -1291,27 +1291,12 @@ mod manifest_list {
         Lazy::new(|| Field::required(516, "min_sequence_number", Any::Primitive(Primitive::Long)));
     pub static ADDED_SNAPSHOT_ID: Lazy<Field> =
         Lazy::new(|| Field::required(503, "added_snapshot_id", Any::Primitive(Primitive::Long)));
-    pub static ADDED_FILES_COUNT: Lazy<Field> = Lazy::new(|| {
-        Field::required(
-            504,
-            "added_files_count",
-            Any::Primitive(Primitive::Int),
-        )
-    });
-    pub static EXISTING_FILES_COUNT: Lazy<Field> = Lazy::new(|| {
-        Field::required(
-            505,
-            "existing_files_count",
-            Any::Primitive(Primitive::Int),
-        )
-    });
-    pub static DELETED_FILES_COUNT: Lazy<Field> = Lazy::new(|| {
-        Field::required(
-            506,
-            "deleted_files_count",
-            Any::Primitive(Primitive::Int),
-        )
-    });
+    pub static ADDED_FILES_COUNT: Lazy<Field> =
+        Lazy::new(|| Field::required(504, "added_files_count", Any::Primitive(Primitive::Int)));
+    pub static EXISTING_FILES_COUNT: Lazy<Field> =
+        Lazy::new(|| Field::required(505, "existing_files_count", Any::Primitive(Primitive::Int)));
+    pub static DELETED_FILES_COUNT: Lazy<Field> =
+        Lazy::new(|| Field::required(506, "deleted_files_count", Any::Primitive(Primitive::Int)));
     pub static ADDED_ROWS_COUNT: Lazy<Field> =
         Lazy::new(|| Field::required(512, "added_rows_count", Any::Primitive(Primitive::Long)));
     pub static EXISTING_ROWS_COUNT: Lazy<Field> =
