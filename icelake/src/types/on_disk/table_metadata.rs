@@ -44,6 +44,7 @@ pub(crate) struct TableMetadata {
     current_snapshot_id: Option<i64>,
     snapshots: Option<Vec<Snapshot>>,
     snapshot_log: Option<Vec<SnapshotLog>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     metadata_log: Option<Vec<MetadataLog>>,
     sort_orders: Vec<SortOrder>,
     default_sort_order_id: i32,
