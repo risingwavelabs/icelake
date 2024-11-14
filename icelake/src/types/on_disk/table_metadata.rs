@@ -40,14 +40,19 @@ pub(crate) struct TableMetadata {
     partition_specs: Vec<PartitionSpec>,
     default_spec_id: i32,
     last_partition_id: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
     properties: Option<HashMap<String, String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     current_snapshot_id: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     snapshots: Option<Vec<Snapshot>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     snapshot_log: Option<Vec<SnapshotLog>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     metadata_log: Option<Vec<MetadataLog>>,
     sort_orders: Vec<SortOrder>,
     default_sort_order_id: i32,
+    #[serde(skip_serializing_if = "Option::is_none")]
     refs: Option<HashMap<String, SnapshotReference>>,
 }
 
