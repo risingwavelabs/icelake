@@ -35,16 +35,16 @@ pub struct Types {
     /// Only available when typ == "list"
     element_id: i32,
     element_required: bool,
-    #[serde(deserialize_with = "string_or_struct")]
+    #[serde(default, deserialize_with = "string_or_struct")]
     element: Option<Box<Types>>,
 
     /// Only available when typ == "map"
     key_id: i32,
-    #[serde(deserialize_with = "string_or_struct")]
+    #[serde(default, deserialize_with = "string_or_struct")]
     key: Option<Box<Types>>,
     value_id: i32,
     value_required: bool,
-    #[serde(deserialize_with = "string_or_struct")]
+    #[serde(default, deserialize_with = "string_or_struct")]
     value: Option<Box<Types>>,
 }
 
